@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JOENI</title>
+  <link rel="shortcut icon" href="images/favicon.ico" />
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animate.css" />
+  <script src="js/jquery.min.js"></script>
+  <script src="js/animate.js"></script>
+	<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<!--nav-->
+<button id="showLeft" class="menu">
+	<span class="line1"></span>
+	<span class="line2"></span>
+	<span class="line3"></span>
+</button>
+<nav class="nav-vertical nav-right" id="navLeft">
+	<a id="HeadPage">Joeni’s profile<span>歡迎您的蒞臨</span></a>
+	<a id="PorPage">Protfolio<span>作品案例</span></a>
+	<a id="AboutPage">Skills & Experience<span>軟體技能 & 過往公司經歷</span></a>
+	<a id="MailPage">Content<span>如果有興趣，請聯繫我吧</span></a>
+</nav>
+<!--nav_end-->
+
+<div id="container" class="container-fluid">
+  <!--head-->
+  <div id="head" class="page">
+    <span class="top animated fadeInDown"></span>
+    <span class="left animated fadeInLeft delay-200ms"></span>
+    <span class="right animated fadeInRight delay-200ms"></span>
+    <span class="footer animated fadeInUp delay-300ms"></span>
+    <img src="images/tree.png" alt="BackTree" class="tree animated treefadeUp delay-500ms">
+    <div class="head__wall animated roadfadeUp delay-400ms">
+      <img src="images/bird.png" alt="Bird" class="bird animated fadeIn delay-1s500ms">
+      <p class="mainTitle animated fadeIn delay-1s200ms">Joeni’s</p>
+      <p class="subTitle animated fadeIn delay-1s200ms">portfolio</p>
+    </div>
+  </div>
+  <!--head__end-->
+
+  <!--Portfolio-->
+  <div id="portfolio" class="page">
+    <p class="m-title color-gold animated">作品案例</p>
+    <p class="s-title color-gold animated">PORTFOLIO</p>
+    <hr class="animated">
+    <div class="por-button">
+      <div class="nav__wall nav">
+        <button class="active col-md-3 offset-md-0 animated" type="button" data-toggle="tab" href="#por01">WebDesign</button>
+        <button class="col-md-3 offset-md-1 animated" type="button" data-toggle="tab" href="#por02">Designs</button>
+      </div>
+    </div>
+    <div class="tab-content list-card container-fluid animated">
+      <!-- Webdesign頁面 -->
+      <div class="por-content tab-pane active" id="por01">
+          <!-- 換頁 -->
+          <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6" v-for="website in websites">
+              <div class="card">
+                <span class="card-img-top">
+                  <img src={{website.img}} data-toggle="modal" data-target="#{{website.modal}}">
+                </span>
+                <span class="card-body">
+                  <p class="card-title">{{website.name}}</p>
+                  <a href="{{website.link}}" target="_blank" v-if="website.weblink" class="btn btn-primary">{{website.link}}</a>
+                  <a class="btn btn-disable" v-if="!website.weblink">{{website.link}}</a>
+                </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <!-- Designs頁面 -->
+      <div class="por-content tab-pane fade" id="por02">
+        <!-- 換頁 -->
+        <div class="row">
+          <div class="col-lg-3 col-md-4 col-sm-6" v-for="design in designs">
+            <div class="card">
+              <span class="card-img-top">
+                <img src={{design.img}} data-toggle="modal" data-target="#{{design.modal}}">
+              </span>
+              <span class="card-body">
+                <p class="card-title">{{design.name}}</p>
+                <a class="btn btn-disable">{{design.link}}</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Designs頁面_end -->
+    </div>
+  </div>
+  <!--Portfolio_end-->
+  <!--about-->
+  <div id="about" class="page">
+    <span class="top animated"></span>
+    <span class="left animated"></span>
+    <span class="right animated"></span>
+    <span class="footer animated"></span>
+    <div class="about__wall">
+    <img src="images/tree-2.png" alt="BackTree" class="tree animated">
+      <div class="content animated">
+        <img src="images/bird-set.png" alt="Bird" class="bird animated">
+        <p class="text animated">HI! 我是Joeni<br>
+          從小就對設計與美術方面有著興趣和熱情，持續精進設計與前端相關技術，能與RD來達到更好的合作團隊默契。</p>
+        <p class="m-title animated">技能軟體</p>
+        <p class="s-title animated">SKILLS</p>
+        <div class="skill-box animated">
+          <div class="row">
+            <ul class="col-lg-3 offset-lg-0 col-md-4 offset-md-2">
+              <p class="title">文字編輯器</p>
+              <li v-for="skill_t in skill_ts">
+                <img src="{{skill_t.icon}}">
+                <span>{{skill_t.name}}</span>
+              </li>
+            </ul>
+            <ul class="col-lg-3 offset-lg-0 col-md-4">
+              <p class="title">設計繪圖</p>
+              <li v-for="skill_d in skill_ds">
+                <img src="{{skill_d.icon}}">
+                <span>{{skill_d.name}}</span>
+              </li>
+            </ul>
+            <ul class="col-lg-3 offset-lg-0 col-md-4 offset-md-2">
+              <p class="title">前端切版</p>
+              <li v-for="skill_web in skill_webs">
+                <img src="{{skill_web.icon}}">
+                <span>{{skill_web.name}}</span>
+              </li>
+            </ul>
+            <ul class="col-lg-3 offset-lg-0 col-md-4">
+              <p class="title">版本控制</p>
+              <li v-for="skill_git in skill_gits">
+                <img src="{{skill_git.icon}}">
+                <span>{{skill_git.name}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="ex-box col-12">
+          <div class="row">
+            <div class="ex-title col-xl-2 offset-xl-3 col-md-2 offset-md-5">
+              <p class="m-title animated">過往公司經歷</p>
+              <p class="s-title animated">EXPERIENCE</p>
+            </div>
+            <div class="ex-list col-xl-6 offset-xl-0 col-md-8 offset-md-2 col-sm-12 paddNone">
+              <div class="ex-list_wall" v-for="compex in compexs">
+                <ul class="company">
+                  <li class="year animated">
+                    <span>{{compex.y_begin}}</span>
+                    <span class="wm">-</span>
+                    <span>{{compex.y_end}}</span>
+                  </li>
+                  <li>
+                    <svg class="point animated" viewbox="-50 -50 100 100">
+                      <circle cx="0" cy="0" r="30" stroke="#faec93" stroke-width="15" fill="#422c19"></circle>
+                    </svg>
+                  </li>
+                  <li class="compy-name animated">{{compex.name}}</li>
+                </ul>
+                <span class="line animated"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--about_end-->
+  <!--contact-->
+  <div id="contact" class="page">
+    <div class="contentPage">
+      <h1 class="animated">THANK YOU<img src="images/fly.png"><br>FOR WATCHING</h1>
+      <h2 class="animated">joeniwork@gmail.com</h2>
+    </div>
+  </div>
+  <!--contact_end-->
+
+<!--彈跳視窗內容-->
+<div class="modal fade" v-for="website in websites" id="{{website.modal}}">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <!-- 模态框主体 -->
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <img src="{{website.img}}">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" v-for="design in designs" id="{{design.modal}}">
+  <div class="modal-dialog {{design.modal_size}}">
+    <div class="modal-content">
+      <!-- 模态框主体 -->
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <img src="{{design.img}}">
+      </div>
+    </div>
+  </div>
+</div>
+<!--彈跳視窗內容_end-->
+</div>
+
+<a id="GoTop" class="gotop">TOP</a>
+<!--nav-->
+<script>
+  $(function(){
+    $('#HeadPage').click(function(){
+        $('html,body').animate({scrollTop:$('#head').offset().top - 10}, 900);
+    });
+    $('#PorPage').click(function(){
+        $('html,body').animate({scrollTop:$('#portfolio').offset().top - 10}, 900);
+    });
+    $('#AboutPage').click(function(){
+        $('html,body').animate({scrollTop:$('#about').offset().top - 10}, 900);
+    });
+    $('#MailPage').click(function(){
+        $('html,body').animate({scrollTop:$('#contact').offset().top - 10}, 900);
+    });
+    $('#GoTop').click(function(){
+        $('html,body').animate({scrollTop:$('#head').offset().top - 10}, 900);
+    });
+  });
+</script>
+<script src="js/classie.js"></script>
+<!--nav_end-->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js'></script>
+<script src="js/por-list.js"></script>
+</body>
+</html>
